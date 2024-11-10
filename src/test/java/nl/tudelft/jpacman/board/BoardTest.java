@@ -22,23 +22,21 @@ class BoardTest {
 
         Board board = new Board(grid);
 
-        assertEquals(1, board.getWidth());
-        assertEquals(1, board.getHeight());
-        assertNotNull(board.squareAt(0, 0));
-        assertTrue(board.withinBorders(0, 0));
-        assertFalse(board.withinBorders(1, 1));
+        assertEquals(1, board.getWidth(), "Board width should be 1.");
+        assertEquals(1, board.getHeight(), "Board height should be 1.");
+        assertNotNull(board.squareAt(0, 0), "Square at (0,0) should not be null.");
+        assertTrue(board.withinBorders(0, 0), "Position (0,0) should be within borders.");
+        assertFalse(board.withinBorders(1, 1), "Position (1,1) should be out of borders.");
     }
 
     /**
-     * Tests creating a board with a null square.
-     * Expects an AssertionError to be thrown.
+     * Tests creating a board with a null square, expecting an AssertionError.
      */
     @Test
     void testBoardWithNullSquare() {
         Square[][] grid = new Square[1][1];
         grid[0][0] = null;
 
-        // Add assertions or preconditions as needed before using the Board constructor.
         assertThrows(AssertionError.class, () -> {
             if (grid[0][0] == null) {
                 throw new AssertionError("Grid contains a null square.");
@@ -47,8 +45,7 @@ class BoardTest {
     }
 
     /**
-     * Tests accessing a square on a board with a null square.
-     * Expects an AssertionError to be thrown.
+     * Tests accessing a square on a board with a null square, expecting an AssertionError.
      */
     @Test
     void testBoardWithNullSquareSquareAt() {
